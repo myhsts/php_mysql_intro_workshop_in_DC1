@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<p><strong>MySQL Basic Queries</strong></p>
+<p> You need to download and import users.sql file to your db from below link:<br />
+https://github.com/myhsts/php_mysql_intro_workshop_in_DC1 <br />
+Below queries are run on users database table:
+<br />
+<br />
+  //select one column<br />
+  SELECT email FROM users<br />
+  <br />
+  //select multiple columns<br />
+  SELECT email, phone_no FROM users<br />
+  <br />
+  //select all columns with filtering condition<br />
+  SELECT * FROM users where pk&gt;0 <br />
+  <br />
+  //sorting data DESC=====latest date show up first<br />
+  SELECT * FROM users where pk&gt;0  ORDER BY date_inserted DESC<br />
+  <br />
+  //only seeing the first 3 records<br />
+  SELECT * FROM users where pk&gt;0  ORDER BY date_inserted DESC LIMIT 0,3<br />
+  <br />
+  //adding As and mysql function: DATE_FORMAT<br />
+  SELECT *, DATE_FORMAT(date_inserted,'%W %M %D') As nice_date FROM users where pk&gt;0  ORDER BY date_inserted DESC LIMIT 0,3<br />
+  <br />
+  //using IN function.....also, you can use NOT IN()<br />
+  SELECT  * FROM users where pk IN(1,2)<br />
+  <br />
+  //using OR condition<br />
+  SELECT * FROM users where (pk=3) OR (pk=4)<br />
+  <br />
+  //using and condition<br />
+  SELECT * FROM users where pk&gt;0 AND name='matt' <br />
+  <br />
+  //using BETWEEN<br />
+  SELECT * FROM users where pk BETWEEN 1 AND 5 <br />
+  ====================================================================================================<br />
+</p>
+<p><strong>MySQL CRUD Queries</strong><br />
+  You need to download and import users.sql file to your db from below link:<br />
+https://github.com/myhsts/php_mysql_intro_workshop_in_DC1 <br />
+Below queries are run on users database table:</p>
+<p>CREATE TABLE <em>table_name </em>(<br />
+  <em>    column1 datatype</em>,<br />
+  <em>    column2 datatype</em>,<br />
+  <em>    column3 datatype</em>,<br />
+    ....<br />
+);<br />
+<br />
+Example: </p>
+<p>CREATE TABLE Persons  (<br />
+     PersonID int,<br />
+     LastName varchar(255),<br />
+     FirstName varchar(255),<br />
+     Address varchar(255),<br />
+     City varchar(255) <br />
+);  <br />
+  <br />
+INSERT INTO users (name,phone_no,status, email) VALUES ('kim', '555-444-4222',2,'h@h.com')    </p>
+<p>UPDATE `users` SET `name`='test name',`phone`='3434444',`status`='3',`email`='t@t.com' WHERE pk='3'</p>
+<p>DELETE FROM `users` WHERE pk=1</p>
+<p><strong>=======================================================================================================<br />
+  <br />
+MySQL Advance Queries</strong></p>
+<p>//normal table join for one-to-many relationship<br />
+SELECT * FROM blog, pic where pk=parent_id </p>
+<p>//normal table join for many-to-many relationship<br />
+SELECT * FROM blog, cat_info, blog_cat where pk=blog_id AND cat_pk=cat_id</p>
+<p>//self-join [need to add join_id column with the same type as pk column)<br />
+SELECT * FROM blog as a, blog as b where a.pk=b.join_id<br />
+</p>
+<p>//Subqueries<br />
+SELECT * FROM blog WHERE pk &lt;=9  AND pk &gt;= (SELECT count(*)  FROM blog  WHERE title =  'matt'); </p>
+<p>//average, min (), max(), etc are like below:<br />
+SELECT AVG(column_name) FROM table_name</p>
+<p>//Group by and Having [The HAVING clause was added to SQL because the WHERE keyword could not be   used with aggregate functions]</p>
+<p>SELECT <em>column_name(s)</em><br />
+FROM <em>table_name</em><br />
+WHERE <em>condition</em><br />
+GROUP BY <em>column_name(s)<br />
+</em>HAVING <em>condition<br />
+</em>ORDER BY <em> column_name(s);</em></p>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
+</body>
+</html>

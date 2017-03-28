@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+
+<h3> Database Logical Design</h3>
+<p> Create Entity-Relationship diagram and  normalize it by checking against 3  anomalies. <br />
+blog table has 8 intital columns (pk, title, disc,  pic1,pic2, cat1 cat2, date_added)==&gt;before normalization (one table only) but after (become 4 tables)</p>
+
+<p><strong>Steps for MySQL Database Design</strong><br />
+  <br />
+  1- Create a db user with strong username and password<br />
+  2- Give user the right access privilege<br />
+  3- Create a db called blogs<br />
+4- Create 4 tables called blog, pic, blog_cat, cat_info </p>
+<ul>
+  <li> blog table has 4 columns (pk, title, disc, date_added)</li>
+  <li>    pic table has 5 columns (pic_pk, address, name, date_added, and parent_id)</li>
+  <li>    develop one-to-many relationship</li>
+  <li>    cat_info table has 2 columns(cat_pk, cat_name)</li>
+  <li>blog_cat has 3 columns (blog_cat_pk, blog_id, cat_id)</li>
+  <li>develop  a M2M relationship for blog and cat</li>
+</ul>
+<p><strong>DB Design Notes</strong><br />
+  =&gt;Primary Key (PK) versus Unique key versus indexed key<br />
+  =&gt; 
+  Decide the length, type and whether column can be null. Also, PK should be auto_increment &amp; set default value if needed. <br />
+  =&gt; Most common column types are varchar, int, timestamp, and text <br />
+=&gt; SQL data types: Numeric, Character String, Date/Datetime, Binary</p>
+<p>====================================================================================================================================================<br />
+  <strong>Notes on naming db elements</strong><br />
+Naming Database Elements<br />
+Before you start working with databases, you have to identify your needs. The purpose of the application (or Web site, in this case) dictates how the database should be designed. 
+When creating databases and tables, you should come up with names (formally called identifiers) that are clear, meaningful, and easy to type. Also, identifiers:</p>
+<ul>
+  
+  <li>    Should only contain letters, numbers, and the underscore (no spaces)</li>
+  <li>    Should not be the same as an existing keyword (like an SQL term or a function name)</li>
+  <li>    Should be treated as case-sensitive</li>
+  <li>    Cannot be longer than 64 characters (approximately)</li>
+  <li>    Must be unique within its realm</li>
+</ul>
+<p>This last rule means that a table cannot have two columns with the same name and a database cannot have two tables with the same name. You can, however, use the same column name in two different tables in the same database.</p>
+<p>Naming a database's elements has three parts:: a- Determine the database's name. b-Determine the table names, and c-Determine the column names for each table.<br />
+  =================================================================================================================================================================  <strong>List of top SQL Commands</strong> [visit http://www.1keydata.com/sql/sql-commands.html for more info]<br />
+  SQL SELECT<br />
+  SQL DISTINCT<br />
+  SQL WHERE<br />
+  SQL AND OR<br />
+  SQL IN<br />
+  SQL BETWEEN<br />
+  SQL Wildcard<br />
+  SQL LIKE<br />
+  SQL ORDER BY<br />
+  SQL GROUP BY<br />
+  SQL HAVING<br />
+  SQL ALIAS<br />
+  SQL AS<br />
+  SQL SELECT UNIQUE<br />
+  SQL INSERT INTO<br />
+  SQL INSERT INTO SELECT<br />
+  SQL UPDATE<br />
+  SQL DELETE FROM<br />
+  ================================================================================================================================<br />
+  <strong>How to Ensure Secure SQL</strong><br />
+  1- Protecting the database access information<br />
+2- Being cautious when running queries, particular those involving user-submitted data., using Secure Socket Layer (SSL), not showing queries to the site visitors and sanitizing the data before db insertion. </p>
+</body>
+</html>
+</body>
+</html>

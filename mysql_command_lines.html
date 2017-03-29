@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h2> Using MySQL via Commond Lines</h2>
+<p>//Accessing MySQL from  Windows &amp;  console running </p>
+<p>1- run the mysql local server from  XAMPP</p>
+<p>2-fire cmd from start line</p>
+<p>3- cd c:\xampp\mysql\bin\</p>
+<p>4- run the username and database: mysql  -u test_user -p DB_Name    -------database name comes here</p>
+<p>//wait for password insertion prompt</p>
+<p>5- run a test commend</p>
+<p>6- run any command you want...</p>
+<p>7- done...</p>
+<p><strong>//Export .sql file</strong><br />
+mysqldump -u -p db_name path-to-file.sql</p>
+<p><strong>//Import .sql file</strong>
+
+  <br />
+mysql -u XXX -p -h localhost DB_Name &lt;path-to-file.sql</p>
+<p><strong>//create &amp; drop a db</strong><br />
+CREATE DATABASE <em>databasename</em>;<br />
+DROP DATABASE <em>databasename</em>;</p>
+<p><strong>//create a new table</strong><br />
+  CREATE TABLE Persons  (<br />
+     PersonID int(8) NOT NULL AUTO_INCREMENT,<br />
+     LastName varchar(255),<br />
+     FirstName varchar(255) NOT NULL,<br />
+     userid varchar(50) COMMENT 'id of users saved here',<br />
+  City varchar(255) DEFAULT 'DC',<br />
+  UNIQUE (userid),<br />
+  PRIMARY Key (PersonID)<br />
+);</p>
+<p><strong>//The following constraints are commonly used in SQL:</strong></p>
+<ul>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_notnull.asp">NOT NULL</a></strong> - Ensures that a column cannot have a NULL value</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_unique.asp">UNIQUE</a></strong> - Ensures that all values in a column are     different</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_primarykey.asp">PRIMARY KEY</a></strong> - A combination of a NOT NULL and UNIQUE.     Uniquely identifies each row in a table</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_foreignkey.asp">FOREIGN KEY</a></strong> - Uniquely identifies a row/record in another     table</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_check.asp">CHECK</a></strong> - Ensures that all values in a column satisfies a specific condition</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_default.asp">DEFAULT</a></strong> - Sets a default value for a column when no value     is specified</li>
+  <li><strong><a href="https://www.w3schools.com/sql/sql_create_index.asp">INDEX</a></strong> - Use to create and retrieve data from the database     very quickly</li>
+</ul>
+<p><strong>//alter a table=&gt;add new column</strong><br />
+  ALTER TABLE <em>table_name</em><br />
+ADD <em>column_name datatype</em>;</p>
+<p><strong>//alter a table=&gt;remove a column</strong><br />
+  ALTER TABLE <em>table_name</em><br />
+DROP COLUMN <em>column_name</em>;</p>
+<p><strong>//alter a table=&gt; change a column</strong><br />
+  ALTER TABLE <em>table_name</em><br />
+MODIFY   COLUMN <em>column_name datatype</em>;</p>
+<p><strong>//Add an Index constraint to a table column</strong><br />
+  CREATE INDEX <em>index_name</em><br />
+ON <em>table_name</em> (<em>column1</em>, <em>column2</em>, ...);<br />
+<br />
+CREATE UNIQUE INDEX <em>index_name</em><br />
+ON <em>table_name</em> (<em>column1</em>, <em>column2</em>, ...);<br />
+<br />
+  CREATE INDEX idx_lastname<br />
+ON Persons (LastName);</p>
+<p><strong>//creating a new table and adding a FOREIGN KEY or FK</strong><br />
+  CREATE TABLE Orders  (<br />
+     OrderID int NOT NULL,<br />
+     OrderNumber int NOT NULL,<br />
+     PersonID int,<br />
+     PRIMARY KEY (OrderID),<br />
+     FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)<br />
+);</p>
+<p> <strong>//adding a FOREIGN KEY or FK to a table X, column Y by pointing it to its parent table Z and column W  [after trable creation]</strong><br />
+ALTER TABLE X ADD FOREIGN KEY (Y) REFERENCES Z(W); </p>
+<p><strong>//Dropping a FK</strong><br />
+  ALTER TABLE X<br />
+DROP FOREIGN KEY Y;</p>
+</body>
+</html>
